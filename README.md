@@ -8,10 +8,10 @@
 
 - L'implémentation réalisée du réseaux de neurones se trouve dans le dossier NN-classification sous le nom cauliflower-alexnet-v1.py.
 - Les paramètres utilisés se trouvent dans cauliflower-nn-args.py.
-- l'architecture du réseaux peut être trouvée https://papers.nips.cc/paper/4824-imagenet-classification-with-deep-convolutional-neural-networks.pdf page 5.
-- Le réseaux pre trained utilisé est disponible sur https://github.com/BVLC/caffe/tree/master/models/bvlc_alexnet. 
-
-- Les différentes images et vidéos se trouvent dans le fichier data. Pour augmenter la taille du dataset (ensemble des images), on va pouvoir utiliser les différentes fonctions suivantes : 
+- l'architecture du réseaux peut être trouvée https://arxiv.org/abs/1608.06993 page 4.
+- On préférera même utiliser un réseaux DenseNet (DCCN), dont les performances sont maintenant meilleures qu'AlexNet. 
+ 
+- Les différentes images et vidéos se trouvent dans le fichier data du drive. Pour augmenter la taille du dataset (ensemble des images), on va pouvoir utiliser les différentes fonctions suivantes : 
 
 ```python
 import tensorflow as tf 
