@@ -24,7 +24,10 @@ for i in range(1,NB_IMG):
         labels_img.append([0,1])
 
 ## Getting the img names : 
+y_train = copy.deepcopy(labels_img)
+y_train = np.array(y_train)
 
+#np.save('/Users/paulgarnier/Desktop/Files/cauliflower_y',y_train)
 name_img = []
 
 for i in range(1,NB_IMG):
@@ -42,7 +45,7 @@ dataset = tf.data.Dataset.from_tensor_slices((name_img, labels_img))
 
 # Creation of map-function to rescale our pictures, and change them a bit : 
 
-def _rescale_process(filename, label,shapeCheking = False,flipLR = False,flipUD = False,flipUDLR = False,randomB = False):
+def _rescale_process(filename, label):
     image_string = tf.read_file(filename)
     image_decoded = tf.image.decode_jpeg(image_string, 
                                             channels=3) # Channels 3 := keep them in RGB, not 
@@ -51,16 +54,6 @@ def _rescale_process(filename, label,shapeCheking = False,flipLR = False,flipUD 
     image = tf.cast(image_decoded, tf.float32)*(1.0/255.0)  - .5
     # Rescale them to 299x299, in order to use Xception after that 
     image = tf.image.resize_images(image, [299, 299])
-    if shapeCheking:
-        print("shape of img : ",image.shape," ",image[0])
-    if flipLR:
-        image = tf.image.flip_left_right(image)
-    if flipUD:
-        image = tf.image.flip_up_down(image)
-    if flipUDLR:
-        tf.image.flip_up_down(tf.image.flip_left_right(image))
-    if randomB:
-        image = tf.image.random_brightness(image,0.09)
     return image, label
 
 # We can now map our dataset : 
@@ -77,17 +70,20 @@ images, labels = iterator.get_next()
 y_train = np.array(labels_img)
 x_train = []
 with tf.Session() as sess:
-    for _ in range(NB_IMG):
+    for _ in range(NB_IMG-1):
         array_classique = images.eval(session=sess)
 
         x_train.append(array_classique)
 
 x_train = np.array(x_train)
 
-np.save('/Users/paulgarnier/Desktop/Files/cauliflower_x',x_train)
-np.save('/Users/paulgarnier/Desktop/Files/cauliflower_y',y_train)
+np.savez_compressed('/Users/paulgarnier/Desktop/Files/cauliflower_x',x_train)
+#np.save('/Users/paulgarnier/Desktop/Files/cauliflower_y',y_train)
 
 def get_dataset():
     return x_train,y_train
+
+
+
 
 
