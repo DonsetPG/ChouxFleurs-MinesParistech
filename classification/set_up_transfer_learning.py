@@ -1,6 +1,3 @@
-import os
-import sys
-import glob
 import argparse
 import matplotlib
 matplotlib.use('agg')
@@ -26,7 +23,7 @@ NB_IMG = 127
 ##################
 
 def setup_to_transfer_learn(model, base_model):
-    """Freeze all layers and compile the model"""
+    # We freeze every layer for transfer learning : 
     for layer in base_model.layers:
         layer.trainable = False
     model.compile(optimizer='rmsprop',
@@ -48,18 +45,8 @@ def add_new_last_layer(base_model, nb_classes):
     x = AveragePooling2D((8, 8), border_mode='valid', name='avg_pool')(x)
     x = Dropout(0.4)(x)
     x = Flatten()(x)
-    predictions = Dense(2, activation='softmax')(x)
+    predictions = Dense(nb_classes, activation='softmax')(x)
     model = Model(input=base_model.input, output=predictions)
     return model
 
 
-
-def get_nb_files(directory):
-    """Get number of files by searching directory recursively"""
-    if not os.path.exists(directory):
-        return 0
-    cnt = 0
-    for r, dirs, files in os.walk(directory):
-        for dr in dirs:
-            cnt += len(glob.glob(os.path.join(r, dr + "/*")))
-    return cnt
