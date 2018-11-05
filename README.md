@@ -1,5 +1,10 @@
 # ChouxFleurs-MinesParistech
 
+# Repérage des centres choux-fleurs mûrs:
+
+- On va encore une fois utiliser un réseaux de neuronnes Xception, pré trained sur ImagesNet. 
+- Il reste cependant le problème des labels des différentes centres : 
+
 # Repérage des choux-fleurs mûrs: 
 
 - https://www.ijabe.org/index.php/ijabe/issue/view/70 : article "High performance vegetable classification from images based on AlexNet deep learning model" par Ling Zhu,	Zhenbo Li,	Chen Li,	Jing Wu et Jun Yue. En s'inspirant de cet article, nous allons pouvoir faire deux choses qui vont grandement nous aider : 
