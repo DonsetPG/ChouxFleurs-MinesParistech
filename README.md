@@ -1,5 +1,13 @@
 # ChouxFleurs-MinesParistech
 
+# Nouvelle Version : 
+
+Jupyter Notebook sur le git. Plus ou moins mis-à-jours.
+
+#############
+
+# Ancienne Version : 
+
 # Repérage des centres choux-fleurs mûrs:
 
 - On va encore une fois utiliser un réseaux de neuronnes Xception, pré trained sur ImagesNet. 
