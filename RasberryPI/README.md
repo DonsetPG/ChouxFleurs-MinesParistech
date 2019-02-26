@@ -117,7 +117,30 @@ NORMALISATION = 255. # Constante pour normaliser les pixels
 
 ```
 
-On va ensuite pouvoir faire commencer le flux vidéo : 
+On va ensuite pouvoir faire commencer le flux vidéo, avec les deux lignes qui suivent : 
+
+```python
+
+vs = VideoStream(usePiCamera = True).start()
+time.sleep(latenceStart)
+
+```
+
+On met ensuite en place le programme qui va tourner pendant les "runningTime secondes, dans un boucle while.
+
+```python
+
+frame = vs.read()
+frame = imutils.resize(frame,width=WIDTH)
+
+image = cv2.resize(frame,(WIDTH,HEIGHT))
+image = image.astype("float") / NORMALISATION
+image = img_to_array(image)
+
+```
+
+Les deux premières lignes vont récupérer la frame en cours, et la mettre sous la bonne taille. 
+Les trois lignes d'après normalise l'image, la mette sous un format compatible avec notre réseau, et transforme l'image en un tableau numpy. 
 
 
 
