@@ -142,6 +142,36 @@ image = img_to_array(image)
 Les deux premières lignes vont récupérer la frame en cours, et la mettre sous la bonne taille. 
 Les trois lignes d'après normalise l'image, la mette sous un format compatible avec notre réseau, et transforme l'image en un tableau numpy. 
 
+```python
 
+(mur,pasMur) = model.predict(image)[0][0:2]
 
+```
+
+On réalise enfin notre prédiction : existe-il un choux fleur mur sur l'image selectionnée? On se restreint ici à seulement deux classes : mur ou pasMur. 
+
+```python
+
+label = "pasMur"
+
+proba = pasMur
+
+if mur > pasMur:
+  label = "mur"
+  proba = mur
+
+```
+
+On place ici les variables label et proba sur ce que l'on a detecté (mur ou non), et la probabilité liée à cette détection. 
+
+Finalement, on renvoit la frame selectionné, en écrivant dessus le label selectionné ainsi que la probabilité liée : 
+
+```python
+
+label = "{}: {:.2f}%".format(label,proba*100)
+frame = cv2.putText(frame,label,(10,25),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,224,0),2)
+
+cv2.imshow("Frame",frame)
+
+```
 
