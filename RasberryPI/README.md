@@ -13,8 +13,8 @@ Une fois dans le menu, rendez-vous dans **Interfacing Options** puis dans **cam�
 # Librairies : 
 
 Le réseau de neurones a été entrainé avec Keras et Tensorflow. Nous allons donc devoir ici utiliser Keras pour charger notre modèle.
-La structure du modèle et les différents poids sont présents dans le fichier * *.zip* * modelDetection. Placer le dans le même emplacement
-que le script * *cf_detector.py* *.  
+La structure du modèle et les différents poids sont présents dans le fichier  *.zip*  modelDetection. Placer le dans le même emplacement
+que le script *cf_detector.py* .  
 
 Il va maintenant falloir configurer la rasberry PI pour fonctionner avec différents modules : numpy, keras et openCV notamment. 
 
