@@ -61,21 +61,23 @@ On va cependant expliquer les différentes parties du code ici.
 
 ```python
 
-from keras.preprocessing.image import img_to_array
-import numpy as np
 import keras
-from keras.models import Model, load_model
-
-from keras.models import model_from_json
-import os
-
-from imutils.video import VideoStream
-from threading import Thread
+import numpy as np
+import os 
 import cv2
 import imutils
 import time
 
+from keras.preprocessing.image import img_to_array
+from keras.models import Model, load_model
+from keras.models import model_from_json
+
+from imutils.video import VideoStream
+from threading import Thread
+
 ```
 
-On commencer par importer les différents modules que l'on va utiliser.
+On commence par importer les différents modules que l'on va utiliser.
+
+
 
