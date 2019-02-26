@@ -4,17 +4,17 @@ Il faudra une rasberry PI qui fonctionne, ainsi qu'une caméra compatible rasber
 
 Il faudra de plus autoriser la caméra à fonctionner sur la rasberry PI utilisée, ouvrir le terminal et taper : 
 
-'''
+```
 sudo raspi-config
-'''
+```
 
-Une fois dans le menu, rendez-vous dans ** Interfacing Options ** puis dans ** caméra **. Il faut ensuite redemarrer la rasberry PI.
+Une fois dans le menu, rendez-vous dans **Interfacing Options** puis dans **caméra**. Il faut ensuite redemarrer la rasberry PI.
 
 # Librairies : 
 
 Le réseau de neurones a été entrainé avec Keras et Tensorflow. Nous allons donc devoir ici utiliser Keras pour charger notre modèle.
-La structure du modèle et les différents poids sont présents dans le fichier * * .zip * * modelDetection. Placer le dans le même emplacement
-que le script * * cf_detector.py * *.  
+La structure du modèle et les différents poids sont présents dans le fichier * *.zip* * modelDetection. Placer le dans le même emplacement
+que le script * *cf_detector.py* *.  
 
 Il va maintenant falloir configurer la rasberry PI pour fonctionner avec différents modules : numpy, keras et openCV notamment. 
 
@@ -78,6 +78,31 @@ from threading import Thread
 ```
 
 On commence par importer les différents modules que l'on va utiliser.
+
+On va ensuite mettre en place notre réseau : 
+
+```python
+
+json_file = open('/home/pi/Desktop/model_small.json','r')
+loaded_model_json = json_file.read()
+json_file.close()
+loaded_model = model_from_json(loaded_model_json)
+
+loaded_model.load_weights("/home/pi/Desktop/model_small.h5")
+
+model = loaded_model
+
+```
+
+On commence par ouvrir le fichier * *.json* * qui contient l'architecture du modèle. Ainsi, à partir de la ligne 
+
+```python
+loaded_model = model_from_json(loaded_model_json)
+```
+
+on posède un modèle avec la bonne architecture, mais sans les poids entrainés. On va donc les charger avec la ligne suivante.
+On obtient finalement notre modèle entrainé.
+
 
 
 
