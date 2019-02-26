@@ -22,27 +22,27 @@ On trouvera ici les différentes instructions pour s'en occuper :
 
 ###### Python, Numpy, etc : 
 
-'''
+```
 sudo apt install libatlas-base-dev
-'''
+```
 
 ###### Tensorflow et Keras : 
 
-'''
+```
 pip3 install tensorflow
 pip3 install keras
-'''
+```
 
 ###### OpenCV : 
 
-[Installation ici](rasberry PI install python with open cv)
+[Installation ici](https://www.pyimagesearch.com/2018/09/26/install-opencv-4-on-your-raspberry-pi/)
 
 ###### Le reste : 
 
-'''
+```
 pip3 install imutils
 pip3 install numpy
-'''
+```
 
 (numpy est normalement déjà installé avec la première ligne de commande)
 
@@ -51,11 +51,31 @@ pip3 install numpy
 
 A ce stade la, tout peut maintenant fonctionner, il suffit de se placer dans la bonne direction dans un terminal, et de taper : 
 
-'''
+```
 python3 cf_detector.py
-'''
+```
 
 Une fenêtre avec la vision de la caméra va alors s'ouvrir, et la probabilité de détection devrait alors s'afficher.
 
+On va cependant expliquer les différentes parties du code ici. 
 
+```python
+
+from keras.preprocessing.image import img_to_array
+import numpy as np
+import keras
+from keras.models import Model, load_model
+
+from keras.models import model_from_json
+import os
+
+from imutils.video import VideoStream
+from threading import Thread
+import cv2
+import imutils
+import time
+
+```
+
+On commencer par importer les différents modules que l'on va utiliser.
 
