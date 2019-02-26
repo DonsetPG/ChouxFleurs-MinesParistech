@@ -103,6 +103,22 @@ loaded_model = model_from_json(loaded_model_json)
 on posède un modèle avec la bonne architecture, mais sans les poids entrainés. On va donc les charger avec la ligne suivante.
 On obtient finalement notre modèle entrainé.
 
+On va ensuite mettre en place les paramètres utilisés : 
+
+```python
+
+latenceStart = 2.0 # Sleeping time pour que la caméra se mette en route (en secondes)
+
+runningTime = 500 # Temps d'activité de la caméra (en secondes)
+
+WIDTH, HEIGHT = 224,224 # Dimensions du flux d'image de la caméra
+
+NORMALISATION = 255. # Constante pour normaliser les pixels 
+
+```
+
+On va ensuite pouvoir faire commencer le flux vidéo : 
+
 
 
 
