@@ -47,7 +47,7 @@ while (end - begin) < 500:
     image = img_to_array(image)
     image = np.expand_dims(image,axis=0)
 
-    (mur,pasMur) = model.predict(image)[0]
+    (mur,pasMur) = model.predict(image)[0][0:2]
     label = "pasMur"
 
     proba = pasMur
