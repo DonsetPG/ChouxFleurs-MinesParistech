@@ -49,6 +49,8 @@ pip3 install numpy
 
 # Le code : 
 
+## Run : 
+
 A ce stade la, tout peut maintenant fonctionner, il suffit de se placer dans la bonne direction dans un terminal, et de taper : 
 
 ```
@@ -58,6 +60,8 @@ python3 cf_detector.py
 Une fenêtre avec la vision de la caméra va alors s'ouvrir, et la probabilité de détection devrait alors s'afficher.
 
 On va cependant expliquer les différentes parties du code ici. 
+
+## Explications : 
 
 ```python
 
