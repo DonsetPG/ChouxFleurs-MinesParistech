@@ -130,7 +130,7 @@ time.sleep(latenceStart)
 
 ```
 
-On met ensuite en place le programme qui va tourner pendant les "runningTime secondes, dans un boucle while.
+On met ensuite en place le programme qui va tourner pendant les runningTime secondes, dans un boucle while.
 
 ```python
 
@@ -144,7 +144,7 @@ image = img_to_array(image)
 ```
 
 Les deux premières lignes vont récupérer la frame en cours, et la mettre sous la bonne taille. 
-Les trois lignes d'après normalise l'image, la mette sous un format compatible avec notre réseau, et transforme l'image en un tableau numpy. 
+Les trois lignes d'après normalisent l'image, la mette sous un format compatible avec notre réseau, et transforment l'image en un tableau numpy. 
 
 ```python
 
@@ -168,7 +168,7 @@ if mur > pasMur:
 
 On place ici les variables label et proba sur ce que l'on a detecté (mur ou non), et la probabilité liée à cette détection. 
 
-Finalement, on renvoit la frame selectionné, en écrivant dessus le label selectionné ainsi que la probabilité liée : 
+Finalement, on renvoit la frame selectionnée, en écrivant dessus le label selectionné ainsi que la probabilité liée : 
 
 ```python
 
