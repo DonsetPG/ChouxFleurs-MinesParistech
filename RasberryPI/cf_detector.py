@@ -21,6 +21,10 @@ from keras.models import model_from_json
 from imutils.video import VideoStream
 from threading import Thread
 
+from cf_center import find_center
+
+BEST_TAUX = 0.9789855072463768
+
 ###################################################################
 
 # On va maintenant charger notre réseau de neurones :
@@ -90,11 +94,14 @@ while (end - begin) < runningTime:
         label = "mur"
         proba = mur
         TOTAL_CONSEC += 1
-
-
+        # On va donc calculer le centre : 
+        centre = find_center(image,BEST_TAUX)
+        trueCentre = [centre[0]*224.,centre[1]*224.]
+        frame = cv2.circle(frame,(trueCentre[0],trueCentre[1]),5,(254,0,0))
+        
     label = "{}: {:.2f}%".format(label,proba*100)
     frame = cv2.putText(frame,label,(10,25),cv2.FONT_HERSHEY_SIMPLEX,0.7,(0,224,0),2)
-
+    
     cv2.imshow("Frame",frame)
     key = cv2.waitKey(1) & 0xFF
 
